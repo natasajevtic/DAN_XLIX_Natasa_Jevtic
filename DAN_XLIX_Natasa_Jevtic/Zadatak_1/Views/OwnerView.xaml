@@ -4,9 +4,145 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Zadatak_1.Views"
+        xmlns:System="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
-        Title="OwnerView" Height="450" Width="800">
+        Title="Admin" MinHeight="450" MinWidth="300" SizeToContent="WidthAndHeight" WindowStartupLocation="CenterScreen">
     <Grid>
-        
+        <Grid>
+            <Menu FontSize="16">
+                <MenuItem Header="_Add manager" Command="{Binding AddManager}">
+                </MenuItem>
+                <MenuItem Header="_Add employee" Command="{Binding AddEmployee}">
+                </MenuItem>
+            </Menu>
+            <Grid Visibility="{Binding IsVisibleAddingManager, UpdateSourceTrigger=PropertyChanged}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="20"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="6"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="20"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="6"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="6"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="6"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="6"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="6"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="6"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="6"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="6"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="6"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="20"/>
+                </Grid.RowDefinitions>
+                <Label Grid.Column="1" Grid.Row="1" Content="Name:" MinWidth="120"/>
+                <Label Grid.Column="1" Grid.Row="3" Content="Surname:"/>
+                <Label Grid.Column="1" Grid.Row="5" Content="Birth date:"/>
+                <Label Grid.Column="1" Grid.Row="7" Content="E-mail:"/>
+                <Label Grid.Column="1" Grid.Row="9" Content="Username:"/>
+                <Label Grid.Column="1" Grid.Row="11" Content="Password:"/>
+                <Label Grid.Column="1" Grid.Row="13" Content="Hotel floor:"/>
+                <Label Grid.Column="1" Grid.Row="15" Content="Work experience:"/>
+                <Label Grid.Column="1" Grid.Row="17" Content="Professional qualification:"/>
+
+                <TextBox Grid.Column="3" Grid.Row="1" Text="{Binding Manager.Name}" MinWidth="120"/>
+                <TextBox Grid.Column="3" Grid.Row="3" Text="{Binding Manager.Surname}"/>
+                <DatePicker Grid.Column="3" Grid.Row="5" SelectedDate="{Binding Path=Manager.DateOfBirth,
+        Mode=TwoWay, TargetNullValue={x:Static System:DateTime.Now}}" MinWidth="120"/>
+                <TextBox Grid.Column="3" Grid.Row="7" Text="{Binding Manager.Email}"/>
+                <TextBox Grid.Column="3" Grid.Row="9" Text="{Binding Manager.Username}"/>
+                <TextBox Grid.Column="3" Grid.Row="11" Text="{Binding Manager.Password}"/>
+                <TextBox Grid.Column="3" Grid.Row="13" Text="{Binding Manager.HotelFloor}"/>
+                <TextBox Grid.Column="3" Grid.Row="15" Text="{Binding Manager.ExperienceWorkingInHotels}"/>
+
+                <ComboBox Grid.Column="3" Grid.Row="17"
+                  ItemsSource="{Binding LevelPQList, UpdateSourceTrigger=PropertyChanged}"
+                  SelectedItem="{Binding Manager.ProfessionalQualifications, UpdateSourceTrigger=PropertyChanged}"/>
+
+                <Button Grid.Column="1" Grid.Row="23" Content="Save" Command="{Binding SaveManager}"/>
+                <Button Grid.Column="3" Grid.Row="23" Content="Cancel" Command="{Binding CancelManager}" Width="130" HorizontalAlignment="Right"/>
+            </Grid>
+            <Grid Visibility="{Binding IsVisibleAddingEmployee, UpdateSourceTrigger=PropertyChanged}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="20"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="6"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="20"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="6"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="6"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="6"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="6"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="6"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="6"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="6"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="6"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="6"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="6"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="6"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="20"/>
+                </Grid.RowDefinitions>
+                <Label Grid.Column="1" Grid.Row="1" Content="Name:" MinWidth="120"/>
+                <Label Grid.Column="1" Grid.Row="3" Content="Surname:"/>
+                <Label Grid.Column="1" Grid.Row="5" Content="Birth date:"/>
+                <Label Grid.Column="1" Grid.Row="7" Content="E-mail:"/>
+                <Label Grid.Column="1" Grid.Row="9" Content="Username:"/>
+                <Label Grid.Column="1" Grid.Row="11" Content="Password:"/>
+                <Label Grid.Column="1" Grid.Row="13" Content="Hotel floor:"/>
+                <Label Grid.Column="1" Grid.Row="15" Content="Gender:"/>
+                <Label Grid.Column="1" Grid.Row="17" Content="Citizenship:"/>
+                <Label Grid.Column="1" Grid.Row="19" Content="Engagement:"/>
+                <Label Grid.Column="1" Grid.Row="21" Content="Salary:"/>
+
+
+                <TextBox Grid.Column="3" Grid.Row="1" Text="{Binding Employee.Name}" MinWidth="120"/>
+                <TextBox Grid.Column="3" Grid.Row="3" Text="{Binding Employee.Surname}"/>
+                <DatePicker Grid.Column="3" Grid.Row="5" SelectedDate="{Binding Path=Employee.DateOfBirth,
+        Mode=TwoWay, TargetNullValue={x:Static System:DateTime.Now}}" MinWidth="120"/>
+                <TextBox Grid.Column="3" Grid.Row="7" Text="{Binding Employee.Email}"/>
+                <TextBox Grid.Column="3" Grid.Row="9" Text="{Binding Employee.Username}"/>
+                <TextBox Grid.Column="3" Grid.Row="11" Text="{Binding Employee.Password}"/>
+                <TextBox Grid.Column="3" Grid.Row="13" Text="{Binding Employee.HotelFloor}"/>
+                <ComboBox Grid.Column="3" Grid.Row="15"
+                  ItemsSource="{Binding GenderList, UpdateSourceTrigger=PropertyChanged}"
+                  SelectedItem="{Binding Employee.Gender, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox Grid.Column="3" Grid.Row="17" Text="{Binding Employee.Citizenship}"/>
+
+                <ComboBox Grid.Column="3" Grid.Row="19"
+                  ItemsSource="{Binding EngagementList, UpdateSourceTrigger=PropertyChanged}"
+                  SelectedItem="{Binding Employee.Engagement, UpdateSourceTrigger=PropertyChanged}"/>
+
+                <TextBox Grid.Column="3" Grid.Row="21" Text="{Binding Employee.Salary, Mode=OneWay}"/>
+
+                <Button Grid.Column="1" Grid.Row="23" Content="Save" Command="{Binding SaveEmployee}"/>
+                <Button Grid.Column="3" Grid.Row="23" Content="Cancel" Command="{Binding CancelEmployee}" Width="130" HorizontalAlignment="Right"/>
+            </Grid>
+        </Grid>
     </Grid>
 </Window>
