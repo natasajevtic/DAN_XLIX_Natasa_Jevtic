@@ -138,7 +138,7 @@
                   ItemsSource="{Binding EngagementList, UpdateSourceTrigger=PropertyChanged}"
                   SelectedItem="{Binding Employee.Engagement, UpdateSourceTrigger=PropertyChanged}"/>
 
-                <TextBox Grid.Column="3" Grid.Row="21" Text="{Binding Employee.Salary, Mode=OneWay}"/>
+                <TextBox Grid.Column="3" Grid.Row="21" Text="{Binding Employee.Salary, Mode=OneWay}" IsReadOnly="True"/>
 
                 <Button Grid.Column="1" Grid.Row="23" Content="Save" Command="{Binding SaveEmployee}"/>
                 <Button Grid.Column="3" Grid.Row="23" Content="Cancel" Command="{Binding CancelEmployee}" Width="130" HorizontalAlignment="Right"/>
