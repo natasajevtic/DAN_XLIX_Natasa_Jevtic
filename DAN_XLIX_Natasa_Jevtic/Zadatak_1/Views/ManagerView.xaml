@@ -5,8 +5,40 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Zadatak_1.Views"
         mc:Ignorable="d"
-        Title="ManagerView" Height="450" Width="800">
+         Title="Manager" MinHeight="400" MinWidth="700" SizeToContent="WidthAndHeight" WindowStartupLocation="CenterScreen">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="20"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="6"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="6"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="20"/>
+        </Grid.RowDefinitions>
+        <Button Grid.Column="1" Grid.Row="1" Content="View all employees" Command="{Binding ViewAllEmployees}"/>
+        <Grid Grid.Column="1" Grid.Row="5" Grid.ColumnSpan="9" Visibility="{Binding IsVisibleEmployeeData, UpdateSourceTrigger=PropertyChanged}">
+            <DataGrid ItemsSource="{Binding EmployeeList,UpdateSourceTrigger=PropertyChanged}"
+                SelectedItem="{Binding Employee, UpdateSourceTrigger=PropertyChanged}"
+                IsReadOnly="True" HeadersVisibility="Column"  AutoGenerateColumns="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Employee" Binding="{Binding Employee}"/>
+                    <DataGridTextColumn Header="Birth date" Binding="{Binding DateOfBirth, StringFormat=d}"/>
+                    <DataGridTextColumn Header="Email" Binding="{Binding Email}"/>
+                    <DataGridTextColumn Header="Username" Binding="{Binding Username}"/>
+                    <DataGridTextColumn Header="Password" Binding="{Binding Password}"/>
+                    <DataGridTextColumn Header="Hotel floor" Binding="{Binding HotelFloor}"/>
+                    <DataGridTextColumn Header="Gender" Binding="{Binding Gender}"/>
+                    <DataGridTextColumn Header="Citizenship" Binding="{Binding Citizenship}"/>
+                    <DataGridTextColumn Header="Engagement " Binding="{Binding Engagement}"/>
+                    <DataGridTextColumn Header="Salary" Binding="{Binding Salary}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
     </Grid>
 </Window>

@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 
 namespace Zadatak_1.Models
 {
@@ -45,6 +47,26 @@ namespace Zadatak_1.Models
             {
                 Debug.WriteLine("Exception" + ex.Message.ToString());
                 return false;
+            }
+        }
+        /// <summary>
+        /// This method creates a list of employees of forwarded manager.
+        /// </summary>
+        /// <param name="manager">manager.</param>
+        /// <returns>List of employees.</returns>
+        public List<vwEmployee> GetEmployees(vwManager manager)
+        {
+            try
+            {
+                using (HotelEntities context = new HotelEntities())
+                {
+                    return context.vwEmployees.Where(x => x.HotelFloor == manager.HotelFloor).ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("Exception" + ex.Message.ToString());
+                return null;
             }
         }
     }

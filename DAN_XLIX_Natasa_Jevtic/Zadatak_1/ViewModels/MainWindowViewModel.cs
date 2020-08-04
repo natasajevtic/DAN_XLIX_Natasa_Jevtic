@@ -16,6 +16,7 @@ namespace Zadatak_1.ViewModels
         readonly string source = @"../../OwnerAccess.txt";
         string ownerUsername;
         string ownerPassword;
+        public vwManager Manager { get; set; }
 
         private string username;
 
@@ -80,7 +81,8 @@ namespace Zadatak_1.ViewModels
             }
             else if (users.FindManager(Username, Password) != null)
             {
-                ManagerView managerView = new ManagerView();
+                Manager = users.FindManager(Username, Password);
+                ManagerView managerView = new ManagerView(Manager);
                 managerView.ShowDialog();
 
             }
